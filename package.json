@@ -1,0 +1,29 @@
+{
+  "name": "poseur",
+  "version": "0.0.1",
+  "description": "Generic library to allow replacing functional call results with a replacement value",
+  "main": "index",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "license": "BSD-2-Clause",
+  "author": "Andy Lin <miloconway@yahoo.com>",
+  "contributors": [
+    {
+      "name": "Andy Lin",
+      "email": "miloconway@yahoo.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/miloconway/node-poseur.git"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^1.20.0",
+    "chai": "^1.9.1"
+  }
+}
