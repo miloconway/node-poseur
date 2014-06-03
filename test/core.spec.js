@@ -13,7 +13,7 @@ var unmaskedAsync = function (key, next) {
 };
 
 var altProvider = function (altContext) {
-  var baseKey = altContext.args.key;
+  var baseKey = altContext.args[0];
   if (baseKey !== 'echo' && baseKey !== 'tango') {
     return unmasked(baseKey + '-fake');
   }
@@ -22,9 +22,10 @@ var altProvider = function (altContext) {
 
 var altProviderAsync = function (altContext) {
   altContext.isAsync(true);
+  var next = altContext.args[1];
   var altProvided = altProvider(altContext);
   if (altProvided) {
-    return altContext.args.next(altProvided);
+    return next(altProvided);
   }
   return altContext.callReal();
 };
@@ -34,9 +35,9 @@ describe('poseur', function () {
 
     it('should error when not given correct arguments', function (done) {
       expect(function () { core() })
-        .to.throw('poseur must be given a function for the first argument');
+        .to.throw('poseur.core must be given a function for the first argument');
       expect(function () { core(unmasked) })
-        .to.throw('poseur must be given a function for the second argument');
+        .to.throw('poseur.core must be given a function for the second argument');
       done();
     });
 
